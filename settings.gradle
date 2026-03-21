@@ -1,0 +1,4 @@
+rootProject.name = 'digital-wallet'
+
+include 'wallet-service'
+include 'transaction-service'
