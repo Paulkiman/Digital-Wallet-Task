@@ -1,0 +1,15 @@
+package com.task.transactionservice.repository;
+
+import com.task.transactionservice.enums.TransactionType;
+import com.task.transactionservice.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
+    List<Transaction> findByWalletIdOrderByCreatedAtDesc(UUID walletId);
+    List<Transaction> findByWalletIdAndType(UUID walletId, TransactionType type);
+}
