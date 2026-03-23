@@ -35,16 +35,28 @@ transaction-service/src/main/resources/application.properties
 
 Both services must be running simultaneously for transfers and withdrawals to work.
 
-## API Endpoints
+## Logging
 
-### Wallet Service (port 8081)
+Both services use SLF4J with Lombok `@Slf4j` for structured logging.
+
+| Level | When |
+|---|---|
+| `INFO` | Normal operations — requests received, actions completed |
+| `WARN` | Rejected operations — duplicate wallet, insufficient funds, wallet not found |
+| `ERROR` | Service failures — wallet-service unreachable, credit step failed after debit |
+
+Logs are visible in the console when running each service. To watch them in real time, run both services and hit any endpoint via Postman — you will see the full request lifecycle logged per operation.
+
+**API Endpoints**
+
+ **Wallet Service (port 8081)**
 
 | Method | Endpoint | Description |
 |---|---|---|
 | POST | /api/wallets | Create a new wallet |
 | GET | /api/wallets/{id} | Get wallet by ID |
 
-### Transaction Service (port 8082)
+**Transaction Service (port 8082)**
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -53,7 +65,7 @@ Both services must be running simultaneously for transfers and withdrawals to wo
 | POST | /api/transactions/transfer | Transfer between wallets |
 | GET | /api/transactions/history/{walletId} | Get transaction history |
 
-## Sample Requests
+**Sample Requests**
 
 ### Create Wallet
 
@@ -64,7 +76,7 @@ POST http://localhost:8081/api/wallets
 }
 
 
-### Deposit
+**Deposit**
 
 POST http://localhost:8082/api/transactions/deposit
 {
