@@ -47,6 +47,17 @@ Both services use SLF4J with Lombok `@Slf4j` for structured logging.
 
 Logs are visible in the console when running each service. To watch them in real time, run both services and hit any endpoint via Postman — you will see the full request lifecycle logged per operation.
 
+**API Documentation (Swagger UI)**
+
+Both services expose interactive API documentation via Swagger UI powered by SpringDoc OpenAPI.
+
+| Service | Swagger UI | API Docs |
+| wallet-service | http://localhost:8081/swagger-ui.html | http://localhost:8081/api-docs |
+| transaction-service | http://localhost:8082/swagger-ui.html | http://localhost:8082/api-docs |
+
+Both services must be running to access their respective documentation pages.
+
+
 **API Endpoints**
 
  **Wallet Service (port 8081)**
